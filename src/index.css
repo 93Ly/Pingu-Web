@@ -5,9 +5,7 @@
   --white: #ffffff;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body, html, #root {
   height: 100%;
@@ -27,7 +25,7 @@ body, html, #root {
   flex-direction: column;
 }
 
-/* --- HEADER SECTION --- */
+/* --- HEADER --- */
 .header {
   display: flex;
   justify-content: space-between;
@@ -43,10 +41,7 @@ body, html, #root {
   letter-spacing: 2px;
 }
 
-.controls {
-  display: flex;
-  gap: 15px;
-}
+.controls { display: flex; gap: 15px; }
 
 .dropdown {
   border: 2px solid var(--primary-blue);
@@ -60,7 +55,7 @@ body, html, #root {
   outline: none;
 }
 
-/* --- TITLE SECTION --- */
+/* --- TITLE --- */
 .section-title {
   text-align: center;
   color: var(--primary-blue);
@@ -71,7 +66,7 @@ body, html, #root {
   flex-shrink: 0;
 }
 
-/* --- KPI SECTION --- */
+/* --- KPI CARDS --- */
 .kpi-container {
   display: flex;
   justify-content: space-between;
@@ -109,7 +104,7 @@ body, html, #root {
   text-transform: uppercase;
 }
 
-/* --- GRAPH SECTION (Generic) --- */
+/* --- GRAPH SECTION --- */
 .graph-section {
   width: 100%;
   flex-grow: 1;
@@ -127,28 +122,35 @@ body, html, #root {
   padding: 10px;
 }
 
-/* --- NEW: SPLIT LAYOUT (For Commercial Page) --- */
+/* --- SPLIT LAYOUT --- */
 .split-layout {
   display: flex;
   gap: 20px;
-  flex-grow: 1; /* Fills remaining height */
+  flex-grow: 1;
   min-height: 0;
-  margin-bottom: 80px; /* Space for Navbar */
+  margin-bottom: 80px;
 }
 
-/* Left Side: Graph */
 .panel-left {
-  flex: 2; /* 66% Width */
+  flex: 2;
   display: flex;
   flex-direction: column;
-  background: white;
-  border: 2px solid var(--primary-blue);
-  padding: 20px;
+  gap: 20px; /* Gap between stacked graphs */
+  /* Remove white bg here so gaps show through */
 }
 
-/* Right Side: List */
+/* Reusable white box for graphs inside panels */
+.chart-container {
+  background: white;
+  border: 2px solid var(--primary-blue);
+  padding: 15px;
+  flex: 1; /* Grow to fill space */
+  display: flex;
+  flex-direction: column;
+}
+
 .panel-right {
-  flex: 1; /* 33% Width */
+  flex: 1;
   background: white;
   border: 2px solid var(--primary-blue);
   padding: 20px;
@@ -157,7 +159,7 @@ body, html, #root {
   overflow-y: auto;
 }
 
-/* Product List Styles */
+/* --- PRODUCT & MARKET BASKET LIST --- */
 .product-item {
   display: flex;
   justify-content: space-between;
@@ -173,28 +175,24 @@ body, html, #root {
   font-size: 1.2rem;
 }
 
-.product-info {
-  flex-grow: 1;
-}
+.product-info { flex-grow: 1; }
+.product-name { font-weight: bold; color: #333; font-size: 0.95rem; }
+.product-sales { font-size: 0.8rem; color: #777; }
+.product-revenue { font-weight: bold; color: var(--primary-blue); font-size: 0.95rem; }
 
-.product-name {
-  font-weight: bold;
-  color: #333;
-  font-size: 0.95rem;
-}
-
-.product-sales {
-  font-size: 0.8rem;
-  color: #777;
-}
-
-.product-revenue {
-  font-weight: bold;
+/* Market Basket Specifics */
+.combo-tag {
+  background-color: #eef2ff;
   color: var(--primary-blue);
-  font-size: 0.95rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-top: 4px;
+  display: inline-block;
 }
 
-/* --- FLOATING NAVBAR --- */
+/* --- NAVBAR --- */
 .navbar {
   position: fixed;
   bottom: 30px;
