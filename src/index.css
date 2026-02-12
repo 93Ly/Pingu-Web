@@ -6,35 +6,34 @@
 }
 
 * {
-  box-sizing: border-box; /* Ensures padding doesn't add extra width/height */
+  box-sizing: border-box;
 }
 
 body, html, #root {
-  height: 100%; /* Force full screen height */
+  height: 100%;
   margin: 0;
-  overflow: hidden; /* DISABLES SCROLLING completely */
+  overflow: hidden; /* DISABLES SCROLLING */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-dark);
 }
 
-/* The Main Container acts as a Flex Column */
 .container {
-  height: 100vh; /* Force full viewport height */
-  max-width: 1400px; /* Allow it to be wider on big screens */
+  height: 100vh;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 20px 40px; /* Padding inside the screen */
+  padding: 20px 40px;
   display: flex;
   flex-direction: column;
 }
 
-/* 1. HEADER SECTION */
+/* --- HEADER SECTION --- */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px; /* Tight spacing */
-  flex-shrink: 0; /* Don't let the header shrink */
+  margin-bottom: 15px;
+  flex-shrink: 0;
 }
 
 .logo {
@@ -58,9 +57,10 @@ body, html, #root {
   font-size: 0.85rem;
   cursor: pointer;
   text-transform: uppercase;
+  outline: none;
 }
 
-/* 2. TITLE SECTION */
+/* --- TITLE SECTION --- */
 .section-title {
   text-align: center;
   color: var(--primary-blue);
@@ -71,13 +71,13 @@ body, html, #root {
   flex-shrink: 0;
 }
 
-/* 3. KPI SECTION */
+/* --- KPI SECTION --- */
 .kpi-container {
   display: flex;
   justify-content: space-between;
   gap: 20px;
   margin-bottom: 20px;
-  flex-shrink: 0; /* Keeps KPIs their proper size */
+  flex-shrink: 0;
 }
 
 .kpi-card {
@@ -109,31 +109,97 @@ body, html, #root {
   text-transform: uppercase;
 }
 
-/* 4. GRAPH SECTION (The Flexible Part) */
+/* --- GRAPH SECTION (Generic) --- */
 .graph-section {
   width: 100%;
-  flex-grow: 1; /* MAGICAL CSS: Takes up all remaining height */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  min-height: 0; /* Crucial for flex containers */
-  margin-bottom: 80px; /* Leave space for the floating navbar */
+  min-height: 0;
+  margin-bottom: 80px;
 }
 
 .graph-box {
   background-color: white;
-  flex-grow: 1; /* Fills the graph-section */
+  flex-grow: 1;
   width: 100%;
   border: 2px solid var(--primary-blue);
   padding: 10px;
-  /* No fixed height! It adapts to the screen. */
 }
 
-/* 5. FLOATING NAVBAR */
+/* --- NEW: SPLIT LAYOUT (For Commercial Page) --- */
+.split-layout {
+  display: flex;
+  gap: 20px;
+  flex-grow: 1; /* Fills remaining height */
+  min-height: 0;
+  margin-bottom: 80px; /* Space for Navbar */
+}
+
+/* Left Side: Graph */
+.panel-left {
+  flex: 2; /* 66% Width */
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border: 2px solid var(--primary-blue);
+  padding: 20px;
+}
+
+/* Right Side: List */
+.panel-right {
+  flex: 1; /* 33% Width */
+  background: white;
+  border: 2px solid var(--primary-blue);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Product List Styles */
+.product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 5px;
+  border-bottom: 1px dashed #ccc;
+}
+
+.product-rank {
+  font-weight: bold;
+  color: var(--primary-blue);
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+.product-info {
+  flex-grow: 1;
+}
+
+.product-name {
+  font-weight: bold;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.product-sales {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.product-revenue {
+  font-weight: bold;
+  color: var(--primary-blue);
+  font-size: 0.95rem;
+}
+
+/* --- FLOATING NAVBAR --- */
 .navbar {
   position: fixed;
-  bottom: 30px; /* Higher up from bottom */
+  bottom: 30px;
   left: 50%;
-  transform: translateX(-50%); /* Centers it horizontally */
+  transform: translateX(-50%);
   background: rgba(255, 255, 255, 0.95);
   padding: 12px 40px;
   border-radius: 50px;
